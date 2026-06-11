@@ -1,81 +1,19 @@
 # 🚀 CloudDeploy Pro
 
-A Full-Stack Serverless DevOps Deployment Portal built using AWS Cloud Services.
+A cloud deployment platform inspired by Vercel and Netlify, built completely on AWS.
 
 ---
 
-## 📌 Project Overview
+## 📌 Overview
 
-CloudDeploy Pro is a cloud-native deployment management platform that enables authenticated users to create, monitor, and manage deployment requests.
+CloudDeploy Pro allows users to:
 
-The project is being developed to demonstrate practical usage of AWS services commonly used in real-world enterprise environments.
-
-This project is focused on implementing:
-
-- Authentication & Authorization
-- Serverless Backend Architecture
-- Event-Driven Processing
-- CI/CD Automation
-- Cloud Monitoring & Notifications
-
----
-
-## 🏗️ Current Architecture
-
-```text
-User
- │
- ▼
-React Frontend
- │
- ▼
-AWS Cognito
- │
- ▼
-Dashboard
-```
-
-### Planned Architecture
-
-```text
-User
- │
- ▼
-React Frontend
- │
- ▼
-API Gateway
- │
- ▼
-AWS Lambda
- │
- ▼
-DynamoDB
- │
- ▼
-SQS Queue
- │
- ▼
-Worker Lambda
- │
- ▼
-SNS Notifications
-```
-
-### Deployment Pipeline
-
-```text
-GitHub
- │
- ▼
-CodePipeline
- │
- ▼
-CodeBuild
- │
- ▼
-Deployment
-```
+* Register and Login securely
+* Verify email accounts
+* Create deployment requests
+* Track deployment history
+* Monitor deployment status
+* Deploy applications using AWS infrastructure
 
 ---
 
@@ -83,187 +21,238 @@ Deployment
 
 ### Frontend
 
-- React
-- TypeScript
-- Tailwind CSS
-- React Router
+* React
+* TypeScript
+* Vite
+* Tailwind CSS
+
+### Backend
+
+* AWS Lambda
+* API Gateway
+* DynamoDB
 
 ### Authentication
 
-- Amazon Cognito
-- AWS Amplify
+* AWS Cognito
 
-### Backend (Planned)
+### Hosting
 
-- AWS Lambda
-- API Gateway
-- DynamoDB
-
-### Event-Driven Services (Planned)
-
-- Amazon SQS
-- Amazon SNS
-
-### DevOps & Monitoring (Planned)
-
-- CodePipeline
-- CodeBuild
-- CloudWatch
-
-### Deployment (Planned)
-
-- Amazon S3
-- CloudFront
-
----
-
-## ☁️ AWS Services Used
-
-### Implemented
-
-- Amazon Cognito
-- AWS Amplify
-
-### Upcoming
-
-- API Gateway
-- Lambda
-- DynamoDB
-- SQS
-- SNS
-- CloudWatch
-- CodePipeline
-- CodeBuild
-- S3
-- CloudFront
-
----
-
-## ✅ Completed Features
-
-### Milestone 1 — Authentication System
-
-- [x] Project Initialization
-- [x] GitHub Repository Setup
-- [x] React + TypeScript Setup
-- [x] Tailwind CSS Setup
-- [x] AWS Cognito User Pool Configuration
-- [x] User Registration
-- [x] Email Verification
-- [x] User Login
-- [x] User Logout
-- [x] Protected Dashboard Access
-
----
-
-## ✅ Completed Features
-
-### Milestone 2 — Backend Foundation
-
-- [x] DynamoDB Table Creation
-- [x] Lambda Function Creation
-- [x] IAM Permission Configuration
-- [x] Deployment Request Data Model
-- [x] Lambda → DynamoDB Integration
-- [x] UUID-based Deployment IDs
-- [x] Request Status Tracking
-
----
-
-## 🎯 Future Enhancements
-
-### Deployment Management
-
-- Create Deployment Requests
-- View Deployment History
-- Deployment Status Tracking
-- Environment Selection
-
-### Event-Driven Automation
-
-- Queue Deployment Requests
-- Background Processing
-- Deployment Notifications
-
-### DevOps Automation
-
-- CodeBuild Integration
-- CodePipeline Integration
-- Automated Build Tracking
+* Amazon S3 Static Website Hosting
 
 ### Monitoring
 
-- CloudWatch Logs
-- CloudWatch Metrics
-- Error Tracking Dashboard
+* AWS CloudWatch
 
 ---
 
-## 📊 Project Progress
+## 🏗️ Architecture
 
-| Module | Status |
-|----------|----------|
-| Frontend Foundation | ✅ Complete |
-| Authentication | ✅ Complete |
-| API Layer | ⏳ In Progress |
-| DynamoDB | ⏳ Pending |
-| SQS | ⏳ Pending |
-| SNS | ⏳ Pending |
-| CodeBuild | ⏳ Pending |
-| CodePipeline | ⏳ Pending |
-| Monitoring | ⏳ Pending |
-| Deployment | ⏳ Pending |
+```text
+React Frontend
+      │
+      ▼
+ API Gateway
+      │
+      ▼
+ AWS Lambda
+      │
+      ▼
+ DynamoDB
+```
 
 ---
 
-## 📅 Development Roadmap
+## ✨ Features Completed
 
-### Phase 1
+### Authentication System
 
-- Authentication System
-- Dashboard Setup
+* User Registration
+* User Login
+* Email Verification
+* Protected Dashboard Access
+* AWS Cognito Integration
 
-**Status:** ✅ Completed
+### Deployment Management
+
+* Create Deployment API
+* Fetch Deployment History API
+* Update Deployment Status API
+* Deployment Tracking Dashboard
+
+### AWS Integration
+
+* Lambda Functions
+* API Gateway Routes
+* DynamoDB Storage
+* IAM Permissions
+* CloudWatch Logging
+* S3 Website Hosting
+
+---
+
+## 📂 Project Structure
+
+```bash
+CloudDeploy-Pro/
+│
+├── frontend/
+│   ├── src/
+│   │   ├── pages/
+│   │   ├── services/
+│   │   ├── components/
+│   │   └── App.tsx
+│   │
+│   ├── package.json
+│   └── vite.config.ts
+│
+├── backend/
+│   ├── createDeployment/
+│   ├── getDeployments/
+│   ├── updateDeploymentStatus/
+│   └── aws-config/
+│
+└── README.md
+```
+
+---
+
+## 🚀 APIs Implemented
+
+### Create Deployment
+
+```http
+POST /deployments
+```
+
+Creates a deployment request and stores it in DynamoDB.
+
+---
+
+### Get Deployments
+
+```http
+GET /deployments
+```
+
+Returns all deployment records.
+
+---
+
+### Update Deployment Status
+
+```http
+POST /status
+```
+
+Updates deployment status.
+
+Example:
+
+```json
+{
+  "deploymentId": "12345",
+  "status": "DEPLOYED"
+}
+```
+
+---
+
+## 🗄️ DynamoDB Schema
+
+```json
+{
+  "deploymentId": "uuid",
+  "repository": "github-url",
+  "branch": "main",
+  "environment": "development",
+  "status": "PENDING",
+  "createdAt": "timestamp"
+}
+```
+
+---
+
+## 🌐 First Hosted Website
+
+Successfully hosted a static website using:
+
+* Amazon S3
+* Static Website Hosting
+* Public Bucket Policy
+
+Example Output:
+
+```html
+Hello CloudDeploy 🚀
+Day 1 Hosting Test Successful
+```
+
+---
+
+## 📈 Day 1 Progress
+
+### Completed
+
+✅ AWS Cognito Setup
+
+✅ Registration Flow
+
+✅ Login Flow
+
+✅ Email Verification
+
+✅ Protected Dashboard
+
+✅ Deployment Creation API
+
+✅ Deployment History API
+
+✅ Deployment Status Updates
+
+✅ DynamoDB Integration
+
+✅ IAM Permissions
+
+✅ CloudWatch Debugging
+
+✅ API Gateway Integration
+
+✅ S3 Website Hosting
+
+✅ First Successful Deployment Test
+
+---
+
+## 🎯 Upcoming Features
 
 ### Phase 2
 
-- Deployment Request System
-- API Gateway
-- Lambda
-- DynamoDB
-
-**Status:** 🚧 In Progress
+* GitHub Repository Cloning
+* AWS CodeBuild Integration
+* Automated Build Process
+* Automatic S3 Upload
+* Deployment URLs
 
 ### Phase 3
 
-- Event Driven Processing
-- SQS
-- SNS
-
-### Phase 4
-
-- CI/CD Automation
-- CodeBuild
-- CodePipeline
-
-### Phase 5
-
-- Production Deployment
-- S3 Hosting
-- CloudFront Distribution
+* Custom Domains
+* Deployment Logs
+* Build Logs
+* Environment Variables
+* Team Workspaces
+* Project Management
 
 ---
 
-## 👨‍💻 Developer
+## 👨‍💻 Author
 
 **Aadithya R**
 
-AWS Developer Associate (In Progress)
-
-Building practical cloud-native projects using AWS Serverless technologies.
+Building a Vercel-like cloud deployment platform from scratch using AWS.
 
 ---
 
-## ⭐ Repository Goal
+## ⭐ Day 1 Achievement
 
-The objective of this repository is to showcase practical AWS development skills through a real-world serverless DevOps platform that demonstrates authentication, event-driven architecture, automation, monitoring, and CI/CD best practices.
+Built the complete foundation of a cloud deployment platform including authentication, APIs, deployment tracking, AWS infrastructure integration, and successful website hosting on Amazon S3.
