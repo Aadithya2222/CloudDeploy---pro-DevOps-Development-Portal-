@@ -156,17 +156,17 @@ Deployment
 
 ---
 
-## 🚧 Current Development
+## ✅ Completed Features
 
-### Milestone 2 — Deployment Request System
+### Milestone 2 — Backend Foundation
 
-In Progress:
-
-- [ ] API Gateway Setup
-- [ ] Lambda Function Creation
-- [ ] DynamoDB Integration
-- [ ] Deployment Request API
-- [ ] Deployment Submission UI
+- [x] DynamoDB Table Creation
+- [x] Lambda Function Creation
+- [x] IAM Permission Configuration
+- [x] Deployment Request Data Model
+- [x] Lambda → DynamoDB Integration
+- [x] UUID-based Deployment IDs
+- [x] Request Status Tracking
 
 ---
 
